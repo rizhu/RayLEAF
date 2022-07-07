@@ -1,0 +1,12 @@
+jupyter
+matplotlib
+numpy
+pandas
+Pillow
+ray
+scipy
+tabulate
+torch
+torchaudio
+torchvision
+tqdm
