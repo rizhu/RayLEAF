@@ -1,11 +1,10 @@
-# RayLEAF: Federated learning with Privacy
+# RayLEAF: A Benchmark for Federated Learning
 
-RayLeaf is a framework that supports federated learning with differential privacy. 
-* [*Federated learning*](https://en.wikipedia.org/wiki/Federated_learning) refers to machine learning (ML) techniques that train models or algorithms across multiple devices/nodes with local data samples, without communicating them. This would allow us to train the learning model or algorithms moreefficiently, by leveraging the computational resources from multiple devices/nodes.
-* [*Differential privacy*](https://en.wikipedia.org/wiki/Differential_privacy) protects the local data by constraining on the algorithms access and disclosure of private information that can be used to identify individuals. This will protect the individual devices/nodes from being identified in the training process.
-
-The motivating question that we ask is: Can we apply differential privacy to local data samples, while still benefit from the federated learning setting? We want to protect individual's privacy, but gain efficiency from the the distributed setting.
-
+RayLEAF is a framework for implementing and deploying federated learning experiments. Originally forked from [https://github.com/TalwalkarLab/leaf](LEAF), RayLEAF has been reimplemented from the ground up using PyTorch and Ray to enable high scalability and optimal resource usage and parallelization. To get started, install the package from PyPI
+```
+pip install rayleaf
+```
+From there, check out `sample_experiment.py` to see the APIs and workflow. Finally, the source code is open source on GitHub at [https://github.com/rizhu/rayleaf-source](https://github.com/rizhu/rayleaf-source).
 
 ## Resources
 ### LEAF: Benchmark datasets for federated learning
@@ -15,7 +14,7 @@ The motivating question that we ask is: Can we apply differential privacy to loc
 
 ### Ray
   * **Homepage:** [ray-project](https://github.com/ray-project/ray) is adopted for its universal API for building distributed applications.
-We use the  Ray framework for our implementation of distributed framework. For each local node, our algorithm passes the gradient to the serve for model training.
+We use the  Ray framework for our implementation of distributed framework.
 
 ## Datasets
 
@@ -55,14 +54,15 @@ We use the  Ray framework for our implementation of distributed framework. For e
   * **Details:** 1,660,820 users with a total of 56,587,343 comments. 
   * **Task:** Next-word Prediction.
 
+7. Speech Commands
+
+  * **Overview:** We federate the speech data released by [Googe](https://www.tensorflow.org/datasets/catalog/speech_commands).
+  * **Details:** 2000 users. 
+  * **Task:** Audio Classification.
+
 ## Notes
 
 - Install the libraries listed in ```requirements.txt```
     - i.e. with pip: run ```pip3 install -r requirements.txt```
 - Go to directory of respective dataset for instructions on generating data
     - in MacOS check if ```wget``` is installed and working
-- ```models``` directory contains instructions on running baseline reference implementations
-
-## Experiments
-- Malicious client that communicates flipped weights.
-- Malicious client that gradually makes its own weights larger.
