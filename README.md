@@ -56,7 +56,7 @@ We use the  Ray framework for our implementation of distributed framework.
 
 7. Speech Commands
 
-  * **Overview:** We federate the speech data released by [Googe](https://www.tensorflow.org/datasets/catalog/speech_commands).
+  * **Overview:** We federate the speech data released by [Google](https://www.tensorflow.org/datasets/catalog/speech_commands).
   * **Details:** 2000 users. 
   * **Task:** Audio Classification.
 

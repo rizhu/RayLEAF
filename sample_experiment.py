@@ -7,7 +7,9 @@ from sklearn.utils.extmath import randomized_svd
 
 
 import rayleaf
+
 from rayleaf.entities import Server, Client
+from rayleaf.utils.logging_utils import log
 
 
 NUM_ROUNDS = 100
@@ -19,7 +21,7 @@ CLIENT_LR = 0.05
 CLIENT_BATCH_SIZE = 64
 NUM_EPOCHS_ON_CLIENTS = 10
 
-GPUS_PER_CLIENT_CLSUTER = 0.75
+GPUS_PER_CLIENT_CLUSTER = 0.75
 NUM_CLIENT_CLUSTERS = 4
 
 RANK = 16
@@ -58,8 +60,8 @@ class CompClient(Client):
 
 class CompServer(Server):
     def init(self):
-        #   Print model parameter shapes
-        print("Model parameters", self.model_params.shapes)
+        #   Log model parameter shapes
+        log("Model parameters", self.model_params.shapes)
 
 
     def server_update(self):
@@ -111,7 +113,7 @@ rayleaf.run_experiment(
     seed = 0,
     use_val_set = False,
     num_epochs = NUM_EPOCHS_ON_CLIENTS,
-    gpus_per_client_cluster = GPUS_PER_CLIENT_CLSUTER,
+    gpus_per_client_cluster = GPUS_PER_CLIENT_CLUSTER,
     num_client_clusters = NUM_CLIENT_CLUSTERS,
     save_model = False,
     notes = f"FedAvg with clients using randomized SVD compression during upload"
